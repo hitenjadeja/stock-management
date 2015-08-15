@@ -5,7 +5,8 @@ from products.models import Product, Stock, Warehouse
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    pass
+
+    add_form_template = "products/product/change_form.html"
 
 
 @admin.register(Warehouse)

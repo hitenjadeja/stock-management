@@ -73,6 +73,8 @@ TEMPLATES = [
     },
 ]
 
+STATIC_URL = '/static/'
+
 WSGI_APPLICATION = 'stock_management.wsgi.application'
 
 
