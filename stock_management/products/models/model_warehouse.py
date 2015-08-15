@@ -8,3 +8,6 @@ class Warehouse(models.Model):
     @property
     def products(self):
         return self.stock_set.all()
+
+    def __unicode__(self):
+        return u'%s' % (self.name, )

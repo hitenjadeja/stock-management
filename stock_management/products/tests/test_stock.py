@@ -34,3 +34,11 @@ class StockTest(TestCase):
                 quantity=1,
             )
 
+    def test_string_representation(self):
+        stock = Stock.objects.create(
+            product=self.product,
+            warehouse=self.warehouse,
+            quantity=10,
+        )
+
+        self.assertEquals(str(stock), "Warehouse: Product x 10")

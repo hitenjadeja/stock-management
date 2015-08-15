@@ -32,3 +32,6 @@ class WarehouseTest(TestCase):
             list(self.warehouse.products),
             [self.stock_1, self.stock_2],
         )
+
+    def test_string_representation(self):
+        self.assertEquals(str(self.warehouse), "Warehouse")

@@ -15,3 +15,7 @@ class ProductTest(TestCase):
         Product.objects.create(name="Test")
         self.assertRaises(IntegrityError, Product.objects.create, name="Test")
 
+    def test_string_representation(self):
+        product = Product.objects.create(name="Test")
+
+        self.assertEquals(str(product), "Test")
