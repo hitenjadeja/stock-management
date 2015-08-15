@@ -40,6 +40,8 @@ INSTALLED_APPS = (
 
     'products',
     'web',
+
+    'test_without_migrations',
 )
 
 MIDDLEWARE_CLASSES = (
