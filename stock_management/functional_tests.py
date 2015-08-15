@@ -3,7 +3,7 @@ import unittest
 from selenium import webdriver
 
 
-class NewVisitorTest(unittest.TestCase):
+class FunctionalTests(unittest.TestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -13,8 +13,8 @@ class NewVisitorTest(unittest.TestCase):
         self.browser.quit()
 
     def test_get_home_page(self):
-        self.browser.get('http://localhost:8000')
-        self.assertIn('Django', self.browser.title)
+        self.browser.get('http://localhost:8000/')
+        self.assertIn('Home', self.browser.title)
 
 
 if __name__ == '__main__':
