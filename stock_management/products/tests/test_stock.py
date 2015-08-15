@@ -1,3 +1,4 @@
+from django.db.utils import IntegrityError
 from django.test import TestCase
 
 from products.models import Product, Stock, Warehouse
@@ -18,3 +19,18 @@ class StockTest(TestCase):
 
         self.assertEqual(stock.product.name, "Product")
         self.assertEqual(stock.warehouse.name, "Warehouse")
+
+    def test_product_warehouse_unique(self):
+        Stock.objects.create(
+            product=self.product,
+            warehouse=self.warehouse,
+            quantity=1,
+        )
+
+        with self.assertRaises(IntegrityError):
+            Stock.objects.create(
+                product=self.product,
+                warehouse=self.warehouse,
+                quantity=1,
+            )
+

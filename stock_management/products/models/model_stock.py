@@ -6,3 +6,8 @@ class Stock(models.Model):
     product = models.ForeignKey('products.Product')
     warehouse = models.ForeignKey('products.Warehouse')
     quantity = models.IntegerField()
+
+    class Meta:
+
+        unique_together = ('product', 'warehouse')
+
