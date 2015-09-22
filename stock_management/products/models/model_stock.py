@@ -4,16 +4,16 @@ from django.db import models
 class Stock(models.Model):
 
     product = models.ForeignKey('products.Product')
-    warehouse = models.ForeignKey('products.Warehouse')
+    location = models.ForeignKey('products.Location')
     quantity = models.IntegerField()
 
     class Meta:
 
-        unique_together = ('product', 'warehouse')
+        unique_together = ('product', 'location')
 
     def __unicode__(self):
         return u'%s: %s x %s' % (
-            self.warehouse,
+            self.location,
             self.product,
             self.quantity,
         )

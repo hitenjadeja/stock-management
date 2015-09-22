@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from products.models import Product, Stock, Warehouse
+from products.models import Product, Stock, Warehouse, Location
 
 
 class WarehouseTest(TestCase):
@@ -9,16 +9,17 @@ class WarehouseTest(TestCase):
         self.product_1 = Product.objects.create(name="Product 1")
         self.product_2 = Product.objects.create(name="Product 2")
         self.warehouse = Warehouse.objects.create(name="Warehouse")
+        self.location = Location.objects.create(name="Location", warehouse=self.warehouse)
 
         self.stock_1 = Stock.objects.create(
             product=self.product_1,
-            warehouse=self.warehouse,
+            location=self.location,
             quantity=1,
         )
 
         self.stock_2 = Stock.objects.create(
             product=self.product_2,
-            warehouse=self.warehouse,
+            location=self.location,
             quantity=1,
         )
 
@@ -27,9 +28,9 @@ class WarehouseTest(TestCase):
 
         self.assertEqual(warehouse.name, "Test")
 
-    def test_list_warehouse_products(self):
+    def test_list_warehouse_stock(self):
         self.assertListEqual(
-            list(self.warehouse.products),
+            list(self.warehouse.stock),
             [self.stock_1, self.stock_2],
         )
 

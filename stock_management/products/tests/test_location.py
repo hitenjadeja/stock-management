@@ -16,3 +16,11 @@ class LocationTest(TestCase):
 
         self.assertEqual(location.name, "Test")
         self.assertEqual(location.warehouse, self.warehouse)
+
+    def test_unicode(self):
+        location = Location.objects.create(
+            name="Location",
+            warehouse=self.warehouse,
+        )
+
+        self.assertEquals(str(location), "Test > Location")
